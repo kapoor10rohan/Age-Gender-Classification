@@ -2,10 +2,12 @@ Age and Gender Classification
 
 
 
-Section 1: Introduction 
+Section 1: 
+Introduction 
 This assignment revolves around the task of building and training two Convolutional Neural Networks (CNNs) models for classifying gender and predicting age from facial images on a given training face dataset: a subset of the UTKFace dataset (5000 face images) with GPU on Google Colab. The first model, model A, is defined and trained from scratch. The second model, model B, involves selecting and fine-tuning pre-trained model to adapt it to this specific task. The aim is to build and train models that could achieve both tasks with high accuracy.
 			 					
-Section 2: My own CNN (model A) 
+Section 2: 
+My own CNN (model A) 
 Model architecture details:
 An architecture of the model A begins with a series of convolutional layers, progressively deepening from 64 to 512 filters, each followed by batch normalisation and ReLU activation to ensure non-linearity and training stability. After every two convolutional layers, a max pooling layer reduces the spatial dimensions of feature maps, optimising the network for computational efficiency. Prior to entering the fully-connected layers, the feature map is reduced below 10x10 size, focusing on the most critical features. The network culminates in two distinct output layers: a sigmoid-activated unit for binary gender classification and a ReLU-activated unit for age regression. To prevent overfitting, batch normalisation is used to normalise the input layer by adjusting and scaling the activations; dropout is applied after pooling and dense layers, which randomly omits a fraction of the neurons during training. Data Augmentations including scaling pixel values, rotating, shifting, adjusting brightness, and flipping images horizontally enhances diversity of dataset to improve model generalization and robustness.
 Training process:
@@ -14,7 +16,8 @@ The training process is characterised using the Adam optimiser with initial lear
 Discussion of the performance:
 The custom CNN model, model A, achieves an accuracy of 86-87% (validation dataset) in gender prediction, and age Mean Absolute Error (MAE) of 6-6.5 (validation dataset) in age prediction, demonstrating the model’s adeptness at both gender and age relevant features extraction. The model’s learning curves for both loss and accuracy indicate that the model converges well. While gender classification shows high accuracy, age estimation accuracy suggests slight room for improvement, highlighting the need for further optimisation strategies to enhance overall model performance and generalisation.
 					 						
-Section 3: Pre-trained CNN (model B) 
+Section 3:
+Pre-trained CNN (model B) 
 Model architecture details:
 An architecture of the model B leverages MobileNetV2, pre-trained on the ImageNet dataset, a decision driven by its compelling blend of efficiency and adaptability, and proven performance in visual recognition tasks. Initially, all layers in the MobileNetV2 base model are frozen to retain the comprehensive image features learnt from ImageNet, ensuring these foundational insights remain intact during the initial adaptation phase. Building on pre-trained base, custom layers are introduced to address the dual objectives: age prediction (regression task) and gender prediction (binary classification task). Key enhancements include data augmentation, a GlobalAveragePooling2D layer for feature map compression and dense layers equipped with L2 regularisation and batch normalisation to mitigate overfitting. Additionally, an additive layer strengthens the model's predictive capacity. The model concludes in two distinct output layers: a sigmoid-activated unit for binary gender classification and a ReLU-activated unit for age regression. 
 
