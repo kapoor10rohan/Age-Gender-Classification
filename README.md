@@ -2,8 +2,8 @@ Age and Gender Classification
 
 
 
-Section 1: 
-Introduction 
+Section 1: <br>
+Introduction <br>
 This assignment revolves around the task of building and training two Convolutional Neural Networks (CNNs) models for classifying gender and predicting age from facial images on a given training face dataset: a subset of the UTKFace dataset (5000 face images) with GPU on Google Colab. The first model, model A, is defined and trained from scratch. The second model, model B, involves selecting and fine-tuning pre-trained model to adapt it to this specific task. The aim is to build and train models that could achieve both tasks with high accuracy.
 			 					
 Section 2: 
